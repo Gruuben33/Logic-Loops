@@ -26,12 +26,37 @@ function setup() {
     }
     let average = sum / sortedGrades.length
 
+    // Median
+    let even = false
+    let odd = false
+    if (sortedGrades.length % 2 == 0) {
+        even = true
+    } else {
+        odd = true
+    }
+    let median = 0
+    if (even) {
+        let mid1 = sortedGrades[sortedGrades.length / 2]
+        let mid2 = sortedGrades[sortedGrades.length / 2 - 1]
+        median = (mid1 + mid2) / 2
+    } else if (odd) {
+        median = sortedGrades[Math.round(sortedGrades.length / 2) - 1]
+    }
+
     // Present the results
-    let spacing = 100
-    text(`Unsorted Array: \n${grades}`, 50, spacing)
-    text(`Sorted Array: \n${sortedGrades}`, 50, spacing*2)
-    text(`Greatest Grade: \n${big}`, 50, spacing*3)
-    text(`Least Grade: \n${small}`, 50, spacing*4)
-    text(`Range: \n${range}`, 50, spacing*5)
-    text(`Average: \n${average}`, 50, spacing*6)
+    let spacingX = 50
+    let spacingY = 100
+ 
+    text(`Unsorted Array: \n${grades}`, spacingX, spacingY)
+    text(`Sorted Array: \n${sortedGrades}`, spacingX, spacingY*2)
+    text(`Greatest Grade: \n${big}`, spacingX, spacingY*3)
+    text(`Least Grade: \n${small}`, spacingX, spacingY*4)
+    text(`Range: \n${range}`, spacingX, spacingY*5)
+    text(`Average: \n${average}`, spacingX, spacingY*6)
+    if (even) {
+        text("Even Length", spacingX*4, spacingY*7)
+    } else if (odd) {
+        text("Odd Length", spacingX*4, spacingY*7)
+    }
+    text(`Median: \n${median}`, spacingX, spacingY*7)
 }
