@@ -11,20 +11,30 @@ function setup() {
         grades.push(x)
     }
 
-    // Sort the grades from least to greatest
-    let sortedGrades = sort(grades)
-
     // Least and Greatest and Range
-    let big = sortedGrades[sortedGrades.length - 1]
-    let small = sortedGrades[0]
+    let big = 0
+    let small = 101
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] > big) {
+            big = grades[i]
+        }
+    }
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] < small) {
+            small = grades[i]
+        }
+    }
     let range = big - small
 
     // Sum and Average
     let sum = 0
-    for (let i = 0; i < sortedGrades.length; i++) {
-        sum += sortedGrades[i]
+    for (let i = 0; i < grades.length; i++) {
+        sum += grades[i]
     }
-    let average = sum / sortedGrades.length
+    let average = sum / grades.length
+
+    // Sort the grades from least to greatest
+    let sortedGrades = sort(grades)
 
     // Median
     let even = false
@@ -42,6 +52,26 @@ function setup() {
     } else if (odd) {
         median = sortedGrades[Math.round(sortedGrades.length / 2) - 1]
     }
+
+    // Mode
+    let mode = 0
+    let modeCount = 0
+    let competingMode = 0
+    let competingModeCount = 0
+    for (let i = 0; i < sortedGrades.length; i++) {
+        if (competingMode == sortedGrades[i]) {
+            competingModeCount++
+        } else if (competingModeCount > modeCount) {
+            mode = competingMode
+            modeCount = competingModeCount
+            competingMode = sortedGrades[i]
+            competingModeCount = 1
+        } else {
+            competingMode = sortedGrades[i]
+            competingModeCount = 1
+        }
+    }
+
 
     // Present the results
     let spacingX = 50
