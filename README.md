@@ -1,10 +1,10 @@
 # Logic-Loops
 ## Tasks
-- highest grade ~ complete
-- lowest grade ~ complete
-- range of grades ~ incomplete
-- average grade ~ incomplete
+- [x] highest grade
+- [x] lowest grade
+- [x] range of grades
+- [x] average grade
 ### Bonus
-1. mode ~ incomplete
-2. median ~ incomplete
-3. standard deviation ~ incomplete
+1. [] median
+2. [] mode
+3. [] standard deviation
