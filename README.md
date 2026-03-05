@@ -6,5 +6,5 @@
 - [x] average grade
 ### Bonus
 - [x] median
-- [ ] mode
+- [x] mode
 - [ ] standard deviation

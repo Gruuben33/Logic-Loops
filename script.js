@@ -33,8 +33,20 @@ function setup() {
     }
     let average = sum / grades.length
 
+    // Standard Deviation
+    let deviations = []
+    for (let i = 0; i <grades.length; i++) {
+        currentDeviation = grades[i] - average
+        if (currentDeviation < 0) {
+            currentDeviation *= -1
+        }
+        deviations.push(currentDeviation)
+    }
+
     // Sort the grades from least to greatest
-    let sortedGrades = sort(grades)
+    let sortedGrades = []
+    sortedGrades.push(...grades)
+    sort(sortedGrades)
 
     // Median
     let even = false
@@ -66,16 +78,23 @@ function setup() {
             modeCount = competingModeCount
             competingMode = sortedGrades[i]
             competingModeCount = 1
+        } else if (competingModeCount == modeCount) {
+            mode = "No Mode"
+            competingMode = sortedGrades[i]
+            competingModeCount = 1
         } else {
             competingMode = sortedGrades[i]
             competingModeCount = 1
         }
     }
-
+    if (competingModeCount > modeCount) {
+            mode = competingMode
+            modeCount = competingModeCount
+    }
 
     // Present the results
-    let spacingX = 50
-    let spacingY = 100
+    let spacingX = 40
+    let spacingY = 90
  
     text(`Unsorted Array: \n${grades}`, spacingX, spacingY)
     text(`Sorted Array: \n${sortedGrades}`, spacingX, spacingY*2)
@@ -89,4 +108,6 @@ function setup() {
         text("Odd Length", spacingX*4, spacingY*7)
     }
     text(`Median: \n${median}`, spacingX, spacingY*7)
+    text(`Mode: \n${mode}`, spacingX, spacingY*8)
+    text(`Standard Deviation: \n${deviations}`, spacingX, spacingY*9)
 }
