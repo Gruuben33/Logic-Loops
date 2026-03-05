@@ -7,4 +7,4 @@
 ### Bonus
 - [x] median
 - [x] mode
-- [ ] standard deviation
+- [x] standard deviation

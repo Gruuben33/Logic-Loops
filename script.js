@@ -42,6 +42,11 @@ function setup() {
         }
         deviations.push(currentDeviation)
     }
+    let deviationSum = 0
+    for (let i = 0; i < deviations.length; i++) {
+        deviationSum += deviations[i]
+    }
+    let standardDeviation = deviationSum / deviations.length
 
     // Sort the grades from least to greatest
     let sortedGrades = []
@@ -109,5 +114,6 @@ function setup() {
     }
     text(`Median: \n${median}`, spacingX, spacingY*7)
     text(`Mode: \n${mode}`, spacingX, spacingY*8)
-    text(`Standard Deviation: \n${deviations}`, spacingX, spacingY*9)
+    text(`Standard Deviation: \n${standardDeviation}`, spacingX, spacingY*9)
+    text(`Length of Array: \n${grades.length}`, windowWidth/2, windowHeight/2)
 }
